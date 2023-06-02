@@ -1,0 +1,48 @@
+.form-control {
+  margin: 1rem 0;
+
+  & label,
+  & input,
+  & textarea {
+    display: block;
+  }
+
+  & label {
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+    color: white;
+  }
+
+  & input,
+  & textarea {
+    width: 100%;
+    font: inherit;
+    border: 1px solid #ccc;
+    background: #f8f8f8;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+
+    &:focus {
+      outline: none;
+      background: #ebebeb;
+      border-color: #510077;
+    }
+  }
+
+  &--invalid {
+    & label,
+    & p {
+      color: red;
+    }
+
+    & input,
+    & textarea {
+      border-color: red;
+      background: #ffd1d1;
+    }
+  }
+
+  &__error-text {
+    margin: 0.5rem 0;
+  }
+}
