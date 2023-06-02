@@ -1,0 +1,16 @@
+.place-list {
+  list-style: none;
+  margin: 1rem auto;
+  padding: 0;
+  width: 90%;
+  max-width: 46rem;
+  display: flex;
+  gap: 30px;
+}
+
+@media screen and (max-width: 768px) {
+  .place-list {
+    flex-direction: column;
+    gap: 0;
+  }
+}
