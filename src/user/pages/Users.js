@@ -1,7 +1,10 @@
 import React from 'react';
 
+import { UsersList } from '../components';
+import { DUMMY_USERS } from '../../utils/data/users';
+
 const Users = () => {
-  return <h2>Users Works!</h2>;
+  return <UsersList usersList={DUMMY_USERS} />;
 };
 
 export default Users;
