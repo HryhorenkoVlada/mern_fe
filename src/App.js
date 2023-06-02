@@ -7,16 +7,21 @@ import {
 } from 'react-router-dom';
 
 import Users from './user/pages/Users';
-import NewPlace from './places/pages/NewPlace';
+import { NewPlace, UserPlaces } from './places/pages';
+import { Navigation } from './shared/navigation';
 
 const App = () => {
   return (
     <Router>
-      <Switch>
-        <Route path="/" exact component={Users} />
-        <Route path="/places/new" exact component={NewPlace} />
-        <Redirect to="/" />
-      </Switch>
+      <Navigation />
+      <main>
+        <Switch>
+          <Route path="/" exact component={Users} />
+          <Route path="/:userId/places" exact component={UserPlaces} />
+          <Route path="/places/new" exact component={NewPlace} />
+          <Redirect to="/" />
+        </Switch>
+      </main>
     </Router>
   );
 };
