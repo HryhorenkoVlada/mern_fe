@@ -71,6 +71,7 @@ const UpdatePlace = () => {
       <section className="place-list center">
         <Card>
           <h2>{error}</h2>
+          <Button to="/places">Go Back</Button>
         </Card>
       </section>
     );
