@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 
 import { Button, Card, Input } from '../../../shared/ui';
 import { useForm } from '../../../hooks/useForm.js';
@@ -13,6 +13,7 @@ const UpdatePlace = () => {
   const { placeId } = useParams();
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const navigate = useNavigate();
 
   const { formState, inputHandler, setFormData } = useForm(
     {
@@ -80,6 +81,7 @@ const UpdatePlace = () => {
   const handleEditSubmit = (event) => {
     event.preventDefault();
     console.log(formState.inputs);
+    navigate(-1);
   };
 
   return (

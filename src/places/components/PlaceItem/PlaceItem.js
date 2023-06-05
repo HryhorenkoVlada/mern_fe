@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 import { Button, Card, Modal, Map } from '../../../shared/ui';
 
@@ -7,6 +8,7 @@ import './PlaceItem.scss';
 const PlaceItem = ({ id, title, description, coordinates, address, image }) => {
   const [showMap, setShowMap] = useState(false);
   const [showConfirmModal, setShowConfirmModal] = useState(false);
+  const navigate = useNavigate();
 
   const openMapHandler = () => setShowMap(true);
 
@@ -21,6 +23,10 @@ const PlaceItem = ({ id, title, description, coordinates, address, image }) => {
 
   const declineDeleteHandler = () => {
     setShowConfirmModal(false);
+  };
+
+  const editPlaceHandler = () => {
+    navigate(`/places/${id}/edit`);
   };
 
   return (
@@ -39,7 +45,7 @@ const PlaceItem = ({ id, title, description, coordinates, address, image }) => {
             <Button inverse onClick={openMapHandler}>
               VIEW ON MAP
             </Button>
-            <Button to={`/places/${id}`}>EDIT</Button>
+            <Button onClick={editPlaceHandler}>EDIT</Button>
             <Button danger onClick={openConfirmModalHandler}>
               DELETE
             </Button>

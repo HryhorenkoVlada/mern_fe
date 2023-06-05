@@ -1,11 +1,19 @@
-import { useState, useCallback } from 'react';
+import { useState, useCallback, lazy } from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
 
-import { SignIn, SignUp, Users } from './user/pages';
-import { NewPlace, UpdatePlace, UserPlaces } from './places/pages';
-import { AuthContext } from './context/authContext';
-import { ProtectedRoute } from './shared/routes/ProtectedRoute';
 import { MainLayout } from './layout';
+import { Users } from './user/pages';
+
+import { AuthContext } from './context/authContext';
+import { ProtectedRoute, LazyLoadingRoute } from './shared/routes';
+
+const SignIn = lazy(() => import('./user/pages/auth/SignIn'));
+const SignUp = lazy(() => import('./user/pages/auth/SignUp'));
+const NewPlace = lazy(() => import('./places/pages/NewPlace/NewPlace'));
+const UpdatePlace = lazy(() =>
+  import('./places/pages/UpdatePlace/UpdatePlace')
+);
+const UserPlaces = lazy(() => import('./places/pages/UserPlaces/UserPlaces'));
 
 const App = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -26,29 +34,49 @@ const App = () => {
           <Route
             path=":userId/places"
             element={
-              <ProtectedRoute isLoggedIn={isLoggedIn}>
-                <UserPlaces />
-              </ProtectedRoute>
+              <LazyLoadingRoute>
+                <ProtectedRoute isLoggedIn={isLoggedIn}>
+                  <UserPlaces />
+                </ProtectedRoute>
+              </LazyLoadingRoute>
             }
           />
           <Route
             path="places/new"
             element={
-              <ProtectedRoute isLoggedIn={isLoggedIn}>
-                <NewPlace />
-              </ProtectedRoute>
+              <LazyLoadingRoute>
+                <ProtectedRoute isLoggedIn={isLoggedIn}>
+                  <NewPlace />
+                </ProtectedRoute>
+              </LazyLoadingRoute>
             }
           />
           <Route
-            path="places/:placeId"
+            path="places/:placeId/edit"
             element={
-              <ProtectedRoute isLoggedIn={isLoggedIn}>
-                <UpdatePlace />
-              </ProtectedRoute>
+              <LazyLoadingRoute>
+                <ProtectedRoute isLoggedIn={isLoggedIn}>
+                  <UpdatePlace />
+                </ProtectedRoute>
+              </LazyLoadingRoute>
             }
           />
-          <Route path="sign_in" element={<SignIn />} />
-          <Route path="sign_up" element={<SignUp />} />
+          <Route
+            path="sign_in"
+            element={
+              <LazyLoadingRoute>
+                <SignIn />
+              </LazyLoadingRoute>
+            }
+          />
+          <Route
+            path="sign_up"
+            element={
+              <LazyLoadingRoute>
+                <SignUp />
+              </LazyLoadingRoute>
+            }
+          />
           <Route path="*" element={<Navigate to="/" />} />
         </Route>
       </Routes>
