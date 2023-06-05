@@ -1,7 +1,7 @@
 import React from 'react';
 
 import PlaceItem from '../PlaceItem/PlaceItem';
-import { Card } from '../../../shared/ui';
+import { Button, Card } from '../../../shared/ui';
 
 import './PlacesList.scss';
 
@@ -27,7 +27,7 @@ const PlacesList = ({ places }) => {
     <div className="place-list center">
       <Card>
         <h2 className="center">No places found. Maybe create one?</h2>
-        <button>Share Place</button>
+        <Button to="/places/new">Share Place</Button>
       </Card>
     </div>
   );

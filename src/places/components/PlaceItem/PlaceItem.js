@@ -27,7 +27,7 @@ const PlaceItem = ({ id, title, description, coordinates, address, image }) => {
             <Button inverse onClick={openMapHandler}>
               VIEW ON MAP
             </Button>
-            <Button to={`/places${id}`}>EDIT</Button>
+            <Button to={`/places/${id}`}>EDIT</Button>
             <Button danger>DELETE</Button>
           </div>
         </Card>
