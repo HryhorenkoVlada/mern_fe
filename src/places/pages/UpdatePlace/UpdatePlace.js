@@ -84,10 +84,9 @@ const UpdatePlace = () => {
 
   return (
     <section>
-      <form className="place-form" onSubmit={handleEditSubmit}>
+      <form className="form_wrapper" onSubmit={handleEditSubmit}>
         <Input
           id="title"
-          element="input"
           type="text"
           label="Title"
           validators={[VALIDATOR_REQUIRE()]}
