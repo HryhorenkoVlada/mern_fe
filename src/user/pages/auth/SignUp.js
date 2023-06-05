@@ -5,13 +5,14 @@ import { Button, Input } from '../../../shared/ui';
 import {
   VALIDATOR_EMAIL,
   VALIDATOR_PASSWORD,
+  VALIDATOR_REQUIRE,
 } from '../../../utils/helpers/validators';
 import { useForm } from '../../../hooks';
 import { AuthContext } from '../../../context/authContext';
 
 import './Auth.scss';
 
-const SignIn = () => {
+const SignUp = () => {
   const auth = useContext(AuthContext);
   const navigate = useNavigate();
 
@@ -25,21 +26,32 @@ const SignIn = () => {
         value: '',
         isValid: false,
       },
+      name: {
+        value: '',
+        isValid: false,
+      },
     },
     false
   );
 
   const signInHandler = (event) => {
     event.preventDefault();
-    console.log('SIGNING IN...', formState.inputs);
+    console.log('SIGNING UP...', formState.inputs);
     auth.login();
     navigate('/');
   };
 
   return (
     <section className="form_wrapper">
-      <h1 className="center title">Sign In</h1>
+      <h1 className="center title">Sign Up</h1>
       <form onSubmit={signInHandler}>
+        <Input
+          label="Name"
+          id="name"
+          validators={[VALIDATOR_REQUIRE()]}
+          onInput={inputHandler}
+          errorText="Name is required"
+        />
         <Input
           label="Email"
           validators={[VALIDATOR_EMAIL()]}
@@ -57,17 +69,17 @@ const SignIn = () => {
         />
         <div className="auth__footer">
           <Button className="" type="submit" disabled={!formState.isFormValid}>
-            Sign In
+            Sign Up
           </Button>
         </div>
       </form>
       <div className="center">
-        <Button elemStyles="link" to="/sign_up">
-          Don't have an account? Sign Up
+        <Button elemStyles="link" to="/sign_in">
+          Already have an account?
         </Button>
       </div>
     </section>
   );
 };
 
-export default SignIn;
+export default SignUp;
