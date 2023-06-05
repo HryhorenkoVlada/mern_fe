@@ -1,5 +1,3 @@
-import React from 'react';
-
 import { UsersList } from '../../components';
 import { DUMMY_USERS } from '../../../utils/data/users';
 

@@ -1,5 +1,3 @@
-import React from 'react';
-
 import { Button, Input } from '../../../shared/ui';
 import { useForm } from '../../../hooks/useForm.js';
 import {

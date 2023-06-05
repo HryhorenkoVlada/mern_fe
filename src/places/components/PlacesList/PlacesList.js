@@ -1,5 +1,3 @@
-import React from 'react';
-
 import PlaceItem from '../PlaceItem/PlaceItem';
 import { Button, Card } from '../../../shared/ui';
 

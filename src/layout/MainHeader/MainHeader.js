@@ -1,5 +1,3 @@
-import React from 'react';
-
 import './MainHeader.scss';
 
 const MainHeader = ({ children }) => {

@@ -1,5 +1,3 @@
-import React from 'react';
-
 import './Avatar.scss';
 
 const Avatar = ({ className = '', image, alt, width = 64 }) => {

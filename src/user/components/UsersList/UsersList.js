@@ -1,5 +1,3 @@
-import React from 'react';
-
 import UserItem from '../UserItem/UserItem';
 import { Card } from '../../../shared/ui';
 
