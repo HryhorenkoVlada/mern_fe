@@ -6,7 +6,7 @@ import {
   Switch,
 } from 'react-router-dom';
 
-import Users from './user/pages/Users';
+import { SignIn, Users } from './user/pages';
 import { NewPlace, UpdatePlace, UserPlaces } from './places/pages';
 import { Navigation } from './shared/navigation';
 
@@ -20,6 +20,7 @@ const App = () => {
           <Route path="/:userId/places" exact component={UserPlaces} />
           <Route path="/places/new" exact component={NewPlace} />
           <Route path="/places/:placeId" exact component={UpdatePlace} />
+          <Route path="/sign_in" exact component={SignIn} />
           <Redirect to="/" />
         </Switch>
       </main>
