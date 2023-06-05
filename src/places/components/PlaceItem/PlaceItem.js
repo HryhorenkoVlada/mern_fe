@@ -6,10 +6,22 @@ import './PlaceItem.scss';
 
 const PlaceItem = ({ id, title, description, coordinates, address, image }) => {
   const [showMap, setShowMap] = useState(false);
+  const [showConfirmModal, setShowConfirmModal] = useState(false);
 
   const openMapHandler = () => setShowMap(true);
 
   const closeMapHandler = () => setShowMap(false);
+
+  const openConfirmModalHandler = () => setShowConfirmModal(true);
+
+  const deletePlaceHandler = () => {
+    setShowConfirmModal(false);
+    console.log('DELETING...');
+  };
+
+  const declineDeleteHandler = () => {
+    setShowConfirmModal(false);
+  };
 
   return (
     <>
@@ -28,7 +40,9 @@ const PlaceItem = ({ id, title, description, coordinates, address, image }) => {
               VIEW ON MAP
             </Button>
             <Button to={`/places/${id}`}>EDIT</Button>
-            <Button danger>DELETE</Button>
+            <Button danger onClick={openConfirmModalHandler}>
+              DELETE
+            </Button>
           </div>
         </Card>
       </li>
@@ -36,13 +50,32 @@ const PlaceItem = ({ id, title, description, coordinates, address, image }) => {
         show={showMap}
         onCencel={closeMapHandler}
         header={address}
-        contentClass="place-item__modal-content"
+        contentClass="place-item__modal-content_map"
         footerClass="place-item__modal-actions"
         footer={<Button onClick={closeMapHandler}>CLOSE</Button>}
       >
         <div className="map-container">
           <Map center={coordinates} zoom={16} />
         </div>
+      </Modal>
+      <Modal
+        show={showConfirmModal}
+        onCencel={declineDeleteHandler}
+        header={address}
+        contentClass="place-item__modal-content_text"
+        footerClass="place-item__modal-actions"
+        footer={
+          <>
+            <Button onClick={declineDeleteHandler}>CLOSE</Button>
+            <Button danger onClick={deletePlaceHandler}>
+              Delete
+            </Button>
+          </>
+        }
+      >
+        <p>
+          Do you want to proceed and delete this place? It can't be undone after
+        </p>
       </Modal>
     </>
   );

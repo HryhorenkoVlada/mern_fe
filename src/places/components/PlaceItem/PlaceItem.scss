@@ -39,7 +39,14 @@
 
   &__modal {
     &-content {
-      padding: 0;
+      &_map {
+        padding: 0;
+      }
+      &_text {
+        padding: 1rem;
+        color: #fff;
+        font-size: 18px;
+      }
     }
 
     &-actions {
