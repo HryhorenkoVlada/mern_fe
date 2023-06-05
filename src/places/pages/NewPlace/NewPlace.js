@@ -7,8 +7,6 @@ import {
   VALIDATOR_MINLENGTH,
 } from '../../../utils/helpers/validators';
 
-import './NewPlace.scss';
-
 const NewPlace = () => {
   const { formState, inputHandler } = useForm(
     {
@@ -31,7 +29,7 @@ const NewPlace = () => {
 
   return (
     <section>
-      <form className="place-form" onSubmit={placeSubmitHandler}>
+      <form className="form_wrapper" onSubmit={placeSubmitHandler}>
         <Input
           type="text"
           id="title"
