@@ -32,10 +32,12 @@ const Input = ({
   errorText = '',
   validators = [],
   onInput,
+  initialValue = '',
+  initialIsValid = false,
 }) => {
   const [inputState, dispatch] = useReducer(inputReducer, {
-    value: '',
-    isValid: false,
+    value: initialValue,
+    isValid: initialIsValid,
     isTouched: false,
   });
   const changeHandler = (event) => {
