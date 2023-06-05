@@ -63,3 +63,53 @@
     font-size: 1.5rem;
   }
 }
+
+.link {
+  color: #f8df00;
+  font: inherit;
+  padding: 0.5rem 1.5rem;
+  background: transparent;
+  cursor: pointer;
+  margin-right: 1rem;
+  text-decoration: underline;
+  display: inline-block;
+  transition: all 0.3s ease-in-out;
+
+  &:hover,
+  &:active {
+    color: #fff;
+  }
+
+  &--inverse {
+    color: #292929;
+
+    &:hover,
+    &:active {
+      color: #f8df00;
+    }
+  }
+
+  &--danger {
+    color: #830000;
+
+    &:hover,
+    &:active {
+      color: #f34343;
+    }
+  }
+
+  &:disabled,
+  &:hover:disabled,
+  &:active:disabled {
+    color: #979797;
+    cursor: not-allowed;
+  }
+
+  &--small {
+    font-size: 0.8rem;
+  }
+
+  &--big {
+    font-size: 1.5rem;
+  }
+}

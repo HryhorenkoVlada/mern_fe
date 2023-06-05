@@ -3,52 +3,57 @@ import { Link } from 'react-router-dom';
 
 import './Button.scss';
 
-const Button = (props) => {
-  const classes = [];
+const Button = ({
+  children,
+  inverse,
+  danger,
+  href,
+  size = 'default', // 'small' | 'big' | 'default'
+  type, // 'button' | 'submit' | 'reset'
+  to,
+  exact, // true | false
+  onClick,
+  disabled = false,
+  elemStyles = 'button', // 'button' | 'link'
+}) => {
+  const classes = [`${elemStyles}`];
 
-  if (props.inverse) {
-    classes.push('button--inverse');
+  if (inverse) {
+    classes.push(`${elemStyles}--inverse`);
   }
 
-  if (props.danger) {
-    classes.push('button--danger');
+  if (danger) {
+    classes.push(`${elemStyles}--danger`);
   }
 
-  if (props.href) {
+  if (size) {
+    classes.push(`${elemStyles}--${size}`);
+  } else {
+    classes.push(`${elemStyles}--default`);
+  }
+
+  if (href) {
     return (
-      <a
-        className={`button button--${props.size || 'default'} ${classes.join(
-          ' '
-        )}`}
-        href={props.href}
-      >
-        {props.children}
+      <a className={`${classes.join(' ')}`} href={href}>
+        {children}
       </a>
     );
   }
-  if (props.to) {
+  if (to) {
     return (
-      <Link
-        to={props.to}
-        exact={props.exact}
-        className={`button button--${props.size || 'default'} ${classes.join(
-          ' '
-        )}`}
-      >
-        {props.children}
+      <Link to={to} exact={exact} className={`${classes.join(' ')}`}>
+        {children}
       </Link>
     );
   }
   return (
     <button
-      className={`button button--${props.size || 'default'} ${classes.join(
-        ' '
-      )}`}
-      type={props.type}
-      onClick={props.onClick}
-      disabled={props.disabled}
+      className={`${classes.join(' ')}`}
+      type={type}
+      onClick={onClick}
+      disabled={disabled}
     >
-      {props.children}
+      {children}
     </button>
   );
 };
