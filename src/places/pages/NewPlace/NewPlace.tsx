@@ -6,6 +6,7 @@ import {
   VALIDATOR_REQUIRE,
   VALIDATOR_MINLENGTH,
 } from 'src/utils/helpers/validators';
+import { CreatePlaceDTO } from 'src/types/proto/dto/places/create';
 
 const NewPlace = () => {
   const { formState, inputHandler } = useForm(
@@ -24,7 +25,11 @@ const NewPlace = () => {
 
   const placeSubmitHandler = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    console.log(formState.inputs);
+    const data: CreatePlaceDTO = {
+      title: formState.inputs.title.value,
+      description: formState.inputs.description.value,
+    };
+    console.log(data);
   };
 
   return (

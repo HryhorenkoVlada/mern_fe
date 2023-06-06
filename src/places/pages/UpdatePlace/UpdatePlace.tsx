@@ -10,6 +10,7 @@ import {
   VALIDATOR_REQUIRE,
 } from 'src/utils/helpers/validators';
 import { IPlace } from 'src/types/interfaces/place';
+import { UpdatePlaceDTO } from 'src/types/proto/dto/places/update';
 
 const UpdatePlace = () => {
   const { placeId } = useParams();
@@ -87,7 +88,15 @@ const UpdatePlace = () => {
 
   const handleEditSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    console.log(formState.inputs);
+    if (placeId) {
+      const data: UpdatePlaceDTO = {
+        id: placeId,
+        title: formState.inputs.title.value,
+        description: formState.inputs.description.value,
+      };
+      console.log(data);
+    }
+
     navigate(-1);
   };
 

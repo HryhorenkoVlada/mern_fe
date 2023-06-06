@@ -6,6 +6,7 @@ import { ICoords } from 'src/types/interfaces/coords';
 import { Button, Card, Modal, Map } from 'src/shared/ui';
 
 import './PlaceItem.scss';
+import { DeletePlaceDTO } from 'src/types/proto/dto/places/delete';
 
 interface IPlaceItemProps {
   id: string;
@@ -37,7 +38,10 @@ const PlaceItem: FC<PropsWithChildren<IPlaceItemProps>> = ({
 
   const deletePlaceHandler = () => {
     setShowConfirmModal(false);
-    console.log('DELETING...');
+    const data: DeletePlaceDTO = {
+      id,
+    };
+    console.log('DELETING...', data);
   };
 
   const declineDeleteHandler = () => {

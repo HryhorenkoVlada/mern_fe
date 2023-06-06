@@ -1,8 +1,8 @@
 import type { FC } from 'react';
 
-import UserItem from '../UserItem/UserItem';
 import { Card } from 'src/shared/ui';
 import { IUser } from 'src/types/interfaces/user';
+import UserItem from '../UserItem/UserItem';
 
 import './UsersList.scss';
 

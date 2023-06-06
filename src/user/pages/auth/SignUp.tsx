@@ -10,6 +10,7 @@ import {
 } from 'src/utils/helpers/validators';
 import { useForm } from 'src/hooks';
 import { AuthContext } from 'src/context/authContext';
+import { SignUpDTO } from 'src/types/proto/dto/auth/signUp';
 
 import './Auth.scss';
 
@@ -37,7 +38,12 @@ const SignUp = () => {
 
   const signInHandler = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    console.log('SIGNING UP...', formState.inputs);
+    const data: SignUpDTO = {
+      email: formState.inputs.email.value,
+      password: formState.inputs.password.value,
+      name: formState.inputs.name.value,
+    };
+    console.log('SIGNING UP...', data);
     auth.login();
     navigate('/');
   };

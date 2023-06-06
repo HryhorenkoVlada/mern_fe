@@ -9,6 +9,7 @@ import {
 } from 'src/utils/helpers/validators';
 import { useForm } from 'src/hooks';
 import { AuthContext } from 'src/context/authContext';
+import { SignInDTO } from 'src/types/proto/dto/auth/signIn';
 
 import './Auth.scss';
 
@@ -32,7 +33,11 @@ const SignIn = () => {
 
   const signInHandler = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    console.log('SIGNING IN...', formState.inputs);
+    const data: SignInDTO = {
+      email: formState.inputs.email.value,
+      password: formState.inputs.password.value,
+    };
+    console.log('SIGNING IN...', data);
     auth.login();
     navigate('/');
   };
