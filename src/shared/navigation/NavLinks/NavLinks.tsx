@@ -4,9 +4,10 @@ import { NavLink } from 'react-router-dom';
 import { AuthContext } from 'src/context/authContext';
 
 import './NavLinks.scss';
+import { Button } from 'src/shared/ui';
 
 const NavLinks = () => {
-  const { isLoggedIn } = useContext(AuthContext);
+  const { isLoggedIn, logout } = useContext(AuthContext);
   return (
     <ul className="nav-links">
       <li>
@@ -19,6 +20,9 @@ const NavLinks = () => {
           </li>
           <li>
             <NavLink to="/places/new">NEW PLACE</NavLink>
+          </li>
+          <li>
+            <Button onClick={logout}>SIGN OUT</Button>
           </li>
         </>
       ) : (
